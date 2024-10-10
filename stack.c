@@ -1,24 +1,35 @@
 #include "stack.h"
+#include "stdlib.h"
 
 void initialize(stack *s) {
-  // implement initialize here
+  s->head = NULL;
 }
 
 void push(int x, stack *s) {
-  // implement push here
+  struct node* p = malloc(sizeof(node));
+  p->data = x;
+  p->next = s->head;
+  s->head = p;
 }
 
 int pop(stack *s) {
-  // implement pop here
-  return -1;
+  int x = s->head->data;
+  struct node* p = s->head->next;
+  free(s->head);
+  s->head = p;
+  return x;
 }
 
 bool empty(stack *s) {
-  // implement empty here
+  if (s->head == NULL)
+  {
+    return true;
+  }
+  
   return false;
 }
 
 bool full(stack *s) {
-  // implement full here
-  return false;
+  return falseP;
 }
+
