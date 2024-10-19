@@ -1,5 +1,6 @@
 #include "stack.h"
-#include "stdlib.h"
+#include <stdlib.h>
+#include <assert.h>
 
 void initialize(stack *s) {
   s->head = NULL;
@@ -13,10 +14,12 @@ void push(int x, stack *s) {
 }
 
 int pop(stack *s) {
+  assert(s->head != NULL);
+
   int x = s->head->data;
-  struct node* p = s->head->next;
-  free(s->head);
-  s->head = p;
+  struct node* p = s->head;
+  s->head = s->head->next;
+  free(p);
   return x;
 }
 
@@ -30,6 +33,6 @@ bool empty(stack *s) {
 }
 
 bool full(stack *s) {
-  return falseP;
+  return false;
 }
 
